@@ -18,12 +18,12 @@ By participating in this project, you agree to respect all project contributors 
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/venom90/bunnynet-go-client.git
+   git clone https://github.com/YOUR-USERNAME/bunnynet-go-client.git
    cd bunnynet-go-client
    ```
 3. Add the original repository as upstream:
    ```bash
-   git remote add upstream https://github.com/ORIGINAL-OWNER/bunnynet-go-client.git
+   git remote add upstream https://github.com/venom90/bunnynet-go-client.git
    ```
 4. Install dependencies:
    ```bash
