@@ -1,5 +1,8 @@
 # Bunny.net Go API Client
 
+> **⚠️ UNDER CONSTRUCTION ⚠️**  
+> This client library is currently under active development and is not yet considered stable. The API may change without notice. Use at your own risk.
+
 A Go client library for the [Bunny.net API](https://docs.bunny.net/reference/bunnynet-api-overview).
 
 ## Installation
