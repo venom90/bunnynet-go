@@ -69,6 +69,59 @@ func main() {
 }
 ```
 
+### Using the API Key Resource
+
+```go
+import (
+    "context"
+    "fmt"
+    "github.com/venom90/bunnynet-go-client"
+    "github.com/venom90/bunnynet-go-client/common"
+)
+
+func main() {
+    client := bunnynet.NewClient("your-api-key")
+    ctx := context.Background()
+
+    // List API keys with pagination
+    pagination := common.NewPagination().WithPerPage(10)
+    response, err := client.APIKey.List(ctx, pagination)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Found %d API keys\n", response.TotalItems)
+    for _, apiKey := range response.Items {
+        fmt.Printf("API Key: ID=%d, Roles=%v\n", apiKey.Id, apiKey.Roles)
+    }
+
+    // Create a new API key
+    roles := []string{"PullZone.Read", "Statistics.Read"}
+    newKey, err := client.APIKey.Create(ctx, roles)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Created new API key: %s\n", newKey.Key)
+
+    // Get an API key by ID
+    apiKey, err := client.APIKey.Get(ctx, newKey.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("API Key: ID=%d, Roles=%v\n", apiKey.Id, apiKey.Roles)
+
+    // Delete an API key
+    err = client.APIKey.Delete(ctx, newKey.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("API key deleted successfully")
+}
+```
+
 ### Pagination
 
 The client supports three approaches to pagination:
