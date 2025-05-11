@@ -147,8 +147,6 @@ for _, item := range allItems {
 }
 ```
 
-```
-
 ## Features
 
 - Idiomatic Go API client
@@ -174,4 +172,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This library is distributed under the MIT license.
-```
