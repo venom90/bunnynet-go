@@ -72,6 +72,85 @@ func main() {
 }
 ```
 
+### Using the DNS Zone Resource
+
+```go
+import (
+    "context"
+    "fmt"
+    "github.com/venom90/bunnynet-go-client"
+    "github.com/venom90/bunnynet-go-client/common"
+    "github.com/venom90/bunnynet-go-client/resources"
+)
+
+func main() {
+    client := bunnynet.NewClient("your-api-key")
+    ctx := context.Background()
+
+    // List DNS zones with pagination
+    pagination := common.NewPagination().WithPerPage(10)
+    response, err := client.DNSZone.List(ctx, pagination, "")
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Found %d DNS zones\n", response.TotalItems)
+    for _, zone := range response.Items {
+        fmt.Printf("DNS Zone: ID=%d, Domain=%s, Records=%d\n",
+            zone.Id, zone.Domain, len(zone.Records))
+    }
+
+    // Create a new DNS zone
+    newZone, err := client.DNSZone.Add(ctx, resources.AddDNSZoneOptions{
+        Domain: "example.com",
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Created new DNS zone: %s (ID: %d)\n", newZone.Domain, newZone.Id)
+
+    // Add an A record
+    record, err := client.DNSZone.AddRecord(ctx, newZone.Id, resources.AddDNSRecordOptions{
+        Type:  resources.DNSRecordTypeA,
+        Name:  "@",
+        Value: "192.0.2.1",
+        Ttl:   3600,
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Added A record: ID=%d, Name=%s, Value=%s\n",
+        record.Id, record.Name, record.Value)
+
+    // Enable DNSSEC
+    dnsSecInfo, err := client.DNSZone.EnableDNSSec(ctx, newZone.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("DNSSEC enabled: %t, DS Record: %s\n",
+        dnsSecInfo.Enabled, dnsSecInfo.DsRecord)
+
+    // Export zone file
+    zoneData, err := client.DNSZone.Export(ctx, newZone.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Exported zone file (%d bytes)\n", len(zoneData))
+
+    // Delete the zone
+    err = client.DNSZone.Delete(ctx, newZone.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("DNS zone deleted successfully")
+}
+```
+
 ### Using the API Key Resource
 
 ```go

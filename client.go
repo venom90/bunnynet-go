@@ -34,6 +34,7 @@ type Client struct {
 	// Resources
 	Country *resources.CountryService
 	APIKey  *resources.APIKeyService
+	DNSZone *resources.DNSZoneService
 }
 
 // NewClient returns a new Bunny.net API client
@@ -55,6 +56,7 @@ func NewClient(apiKey string, options ...Option) *Client {
 	// Initialize services
 	client.Country = resources.NewCountryService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
 	client.APIKey = resources.NewAPIKeyService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
+	client.DNSZone = resources.NewDNSZoneService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
 
 	return client
 }
@@ -66,4 +68,6 @@ func (c *Client) SetAPIKey(apiKey string) {
 	// Update API key for all services
 	c.Country.SetAPIKey(apiKey)
 	c.APIKey.SetAPIKey(apiKey)
+	c.DNSZone.SetAPIKey(apiKey)
+
 }
