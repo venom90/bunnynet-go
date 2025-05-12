@@ -10,8 +10,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/venom90/bunnynet-go-client/common"
-	"github.com/venom90/bunnynet-go-client/internal"
+	"github.com/venom90/bunnynet-go/common"
+	"github.com/venom90/bunnynet-go/internal"
 )
 
 // DNSRecordType represents the type of a DNS record

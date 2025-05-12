@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/venom90/bunnynet-go-client"
+	"github.com/venom90/bunnynet-go"
 )
 
 func TestNewClient(t *testing.T) {

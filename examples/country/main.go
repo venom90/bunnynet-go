@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/venom90/bunnynet-go-client"
+	"github.com/venom90/bunnynet-go"
 )
 
 func main() {

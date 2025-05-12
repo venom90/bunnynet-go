@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/venom90/bunnynet-go-client/resources"
+	"github.com/venom90/bunnynet-go/resources"
 )
 
 const (

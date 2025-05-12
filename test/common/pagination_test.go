@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/venom90/bunnynet-go-client/common"
+	"github.com/venom90/bunnynet-go/common"
 )
 
 func TestPagination(t *testing.T) {

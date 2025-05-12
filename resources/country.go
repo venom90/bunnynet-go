@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/venom90/bunnynet-go-client/common"
-	"github.com/venom90/bunnynet-go-client/internal"
+	"github.com/venom90/bunnynet-go/common"
+	"github.com/venom90/bunnynet-go/internal"
 )
 
 // Country represents a country in the Bunny.net API

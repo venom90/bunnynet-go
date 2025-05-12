@@ -1,4 +1,4 @@
-module github.com/venom90/bunnynet-go-client
+module github.com/venom90/bunnynet-go
 
 go 1.23.5
 

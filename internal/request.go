@@ -1,4 +1,3 @@
-// Package internal provides internal utilities for the Bunny.net API client
 package internal
 
 import (
@@ -9,7 +8,7 @@ import (
 	"net/url"
 
 	"github.com/google/go-querystring/query"
-	"github.com/venom90/bunnynet-go-client/common"
+	"github.com/venom90/bunnynet-go/common"
 )
 
 // DoRequest sends an HTTP request and returns the response

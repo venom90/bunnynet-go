@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/venom90/bunnynet-go-client"
-	"github.com/venom90/bunnynet-go-client/test"
+	"github.com/venom90/bunnynet-go"
+	"github.com/venom90/bunnynet-go/test"
 )
 
 func TestCountryList(t *testing.T) {

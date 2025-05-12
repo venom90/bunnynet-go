@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/venom90/bunnynet-go-client/common"
+	"github.com/venom90/bunnynet-go/common"
 )
 
 // ParseResponse parses the response body into the given value

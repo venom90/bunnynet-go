@@ -6,10 +6,10 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/venom90/bunnynet-go-client"
-	"github.com/venom90/bunnynet-go-client/common"
-	"github.com/venom90/bunnynet-go-client/resources"
-	"github.com/venom90/bunnynet-go-client/test"
+	"github.com/venom90/bunnynet-go"
+	"github.com/venom90/bunnynet-go/common"
+	"github.com/venom90/bunnynet-go/resources"
+	"github.com/venom90/bunnynet-go/test"
 )
 
 func TestAPIKeyService_List_Success(t *testing.T) {

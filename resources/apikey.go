@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/venom90/bunnynet-go-client/common"
-	"github.com/venom90/bunnynet-go-client/internal"
+	"github.com/venom90/bunnynet-go/common"
+	"github.com/venom90/bunnynet-go/internal"
 )
 
 // APIKey represents an API key in the Bunny.net API

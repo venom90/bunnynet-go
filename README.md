@@ -8,7 +8,7 @@ A Go client library for the [Bunny.net API](https://docs.bunny.net/reference/bun
 ## Installation
 
 ```bash
-go get github.com/venom90/bunnynet-go-client
+go get github.com/venom90/bunnynet-go
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ go get github.com/venom90/bunnynet-go-client
 
 ```go
 import (
-    "github.com/venom90/bunnynet-go-client"
+    "github.com/venom90/bunnynet-go"
     "time"
 )
 
@@ -39,8 +39,8 @@ client := bunnynet.NewClient(
 import (
     "context"
     "fmt"
-    "github.com/venom90/bunnynet-go-client"
-    "github.com/venom90/bunnynet-go-client/common"
+    "github.com/venom90/bunnynet-go"
+    "github.com/venom90/bunnynet-go/common"
 )
 
 func main() {
@@ -78,9 +78,9 @@ func main() {
 import (
     "context"
     "fmt"
-    "github.com/venom90/bunnynet-go-client"
-    "github.com/venom90/bunnynet-go-client/common"
-    "github.com/venom90/bunnynet-go-client/resources"
+    "github.com/venom90/bunnynet-go"
+    "github.com/venom90/bunnynet-go/common"
+    "github.com/venom90/bunnynet-go/resources"
 )
 
 func main() {
@@ -157,8 +157,8 @@ func main() {
 import (
     "context"
     "fmt"
-    "github.com/venom90/bunnynet-go-client"
-    "github.com/venom90/bunnynet-go-client/common"
+    "github.com/venom90/bunnynet-go"
+    "github.com/venom90/bunnynet-go/common"
 )
 
 func main() {
@@ -210,9 +210,9 @@ func main() {
 import (
     "context"
     "fmt"
-    "github.com/venom90/bunnynet-go-client"
-    "github.com/venom90/bunnynet-go-client/common"
-    "github.com/venom90/bunnynet-go-client/resources"
+    "github.com/venom90/bunnynet-go"
+    "github.com/venom90/bunnynet-go/common"
+    "github.com/venom90/bunnynet-go/resources"
     "time"
 )
 

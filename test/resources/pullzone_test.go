@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/venom90/bunnynet-go-client"
-	"github.com/venom90/bunnynet-go-client/resources"
-	"github.com/venom90/bunnynet-go-client/test"
+	"github.com/venom90/bunnynet-go"
+	"github.com/venom90/bunnynet-go/resources"
+	"github.com/venom90/bunnynet-go/test"
 )
 
 func TestPullZoneService_List_Success(t *testing.T) {

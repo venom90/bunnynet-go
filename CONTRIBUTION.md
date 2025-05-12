@@ -23,7 +23,7 @@ By participating in this project, you agree to respect all project contributors 
    ```
 3. Add the original repository as upstream:
    ```bash
-   git remote add upstream https://github.com/venom90/bunnynet-go-client.git
+   git remote add upstream https://github.com/venom90/bunnynet-go.git
    ```
 4. Install dependencies:
    ```bash
