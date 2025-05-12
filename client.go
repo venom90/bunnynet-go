@@ -36,6 +36,7 @@ type Client struct {
 	APIKey   *resources.APIKeyService
 	DNSZone  *resources.DNSZoneService
 	PullZone *resources.PullZoneService
+	Purge    *resources.PurgeService
 }
 
 // NewClient returns a new Bunny.net API client
@@ -59,6 +60,7 @@ func NewClient(apiKey string, options ...Option) *Client {
 	client.APIKey = resources.NewAPIKeyService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
 	client.DNSZone = resources.NewDNSZoneService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
 	client.PullZone = resources.NewPullZoneService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
+	client.Purge = resources.NewPurgeService(client.httpClient, client.BaseURL, client.apiKey, client.UserAgent)
 
 	return client
 }
@@ -72,4 +74,5 @@ func (c *Client) SetAPIKey(apiKey string) {
 	c.APIKey.SetAPIKey(apiKey)
 	c.DNSZone.SetAPIKey(apiKey)
 	c.PullZone.SetAPIKey(apiKey)
+	c.Purge.SetAPIKey(apiKey)
 }

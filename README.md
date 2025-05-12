@@ -332,7 +332,63 @@ func main() {
 }
 ```
 
-### Pagination
+## Using the Purge Service
+
+The Purge service allows you to purge a specific URL from the Bunny.net CDN cache to ensure that fresh content is delivered to your users.
+
+```go
+import (
+    "context"
+    "fmt"
+    "github.com/venom90/bunnynet-go-client"
+    "github.com/venom90/bunnynet-go-client/resources"
+)
+
+func main() {
+    client := bunnynet.NewClient("your-api-key")
+    ctx := context.Background()
+
+    // Simple purge (synchronous)
+    // This will wait for the purge to complete before returning
+    err := client.Purge.Purge(ctx, "https://example.com/file.jpg", false)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println("Successfully purged URL")
+
+    // Asynchronous purge
+    // This will initiate the purge and return immediately
+    err = client.Purge.Purge(ctx, "https://example.com/folder/", true)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println("Purge request initiated")
+
+    // Using PurgeOptions for more control
+    options := resources.PurgeOptions{
+        URL:   "https://example.com/api/data.json",
+        Async: true,
+    }
+    err = client.Purge.PurgeURL(ctx, options)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println("Purge request initiated with options")
+}
+```
+
+The Purge service supports two modes:
+
+1. **Synchronous purging:** The API call will wait for the purge operation to complete before returning.
+2. **Asynchronous purging:** The API call will initiate the purge operation and return immediately, without waiting for completion.
+
+### Purging can help when:
+
+- You've updated content and want to ensure the latest version is being served
+- You need to remove outdated or incorrect content from the cache
+- You're troubleshooting caching issues
+
+## Pagination
 
 The client supports three approaches to pagination:
 
