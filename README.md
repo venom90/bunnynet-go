@@ -484,6 +484,8 @@ for _, item := range allItems {
 - Country: List and retrieve country information
 - API Key: List, create, retrieve, and delete API keys
 - DNS Zone: Manage DNS zones and records
+- Pull Zone: Manage Pull Zones
+- Purge: Purge URL
 - More resources coming soon...
 
 ## Contributing
