@@ -1,0 +1,66 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+*.coverprofile
+
+# Dependency directories (remove the comment below if you want to check in vendor/)
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+
+# Project specific build files
+bin/
+dist/
+build/
+
+# Debug logs
+*.log
+
+# Custom build output
+bunnynet-*
+
+# Code coverage reports
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Config files with credentials
+config.yaml
+config.json
+config.local.yaml
+config.local.json
+
+# Documentation site output
+site/
+
+# Certificate files
+*.pem
+*.crt
+*.key
+
+# System files
+.DS_Store
+Thumbs.db

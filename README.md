@@ -204,6 +204,134 @@ func main() {
 }
 ```
 
+## Using the Pull Zone Resource
+
+```go
+import (
+    "context"
+    "fmt"
+    "github.com/venom90/bunnynet-go-client"
+    "github.com/venom90/bunnynet-go-client/common"
+    "github.com/venom90/bunnynet-go-client/resources"
+    "time"
+)
+
+func main() {
+    client := bunnynet.NewClient("your-api-key")
+    ctx := context.Background()
+
+    // List Pull Zones with pagination
+    pagination := common.NewPagination().WithPerPage(10)
+    response, err := client.PullZone.List(ctx, pagination, "", false)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Found %d Pull Zones\n", response.TotalItems)
+    for _, zone := range response.Items {
+        fmt.Printf("Pull Zone: ID=%d, Name=%s, Origin=%s\n",
+            zone.Id, zone.Name, zone.OriginUrl)
+    }
+
+    // Create a new Pull Zone
+    newZone, err := client.PullZone.Add(ctx, resources.AddPullZoneOptions{
+        Name:             "example-zone",
+        OriginUrl:        "https://example.com",
+        Type:             0, // Premium
+        EnableGeoZoneUS:  true,
+        EnableGeoZoneEU:  true,
+        EnableGeoZoneASIA: true,
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Created new Pull Zone: %s (ID: %d)\n", newZone.Name, newZone.Id)
+
+    // Add a hostname
+    err = client.PullZone.AddHostname(ctx, newZone.Id, resources.AddHostnameOptions{
+        Hostname: "cdn.example.com",
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Added hostname: cdn.example.com")
+
+    // Load a free SSL certificate
+    err = client.PullZone.LoadFreeCertificate(ctx, resources.LoadFreeCertificateOptions{
+        Hostname: "cdn.example.com",
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Loaded free SSL certificate for cdn.example.com")
+
+    // Add an edge rule for forcing SSL
+    err = client.PullZone.AddOrUpdateEdgeRule(ctx, newZone.Id, resources.AddOrUpdateEdgeRuleOptions{
+        ActionType: 0, // ForceSSL
+        Triggers: []resources.EdgeRuleTrigger{
+            {
+                Type:               0, // URL
+                PatternMatches:     []string{"/*"},
+                PatternMatchingType: 0, // MatchAny
+                TriggerMatchingType: 0, // MatchAny
+            },
+        },
+        Description: "Force SSL for all URLs",
+        Enabled:     true,
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Added edge rule to force SSL")
+
+    // Purge cache
+    err = client.PullZone.PurgeCache(ctx, newZone.Id, nil)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Purged cache for Pull Zone")
+
+    // Get the origin shield queue statistics
+    now := time.Now()
+    yesterday := now.AddDate(0, 0, -1)
+    stats, err := client.PullZone.GetOriginShieldQueueStatistics(ctx, newZone.Id, &resources.StatisticsOptions{
+        DateFrom: &yesterday,
+        DateTo:   &now,
+        Hourly:   true,
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Retrieved origin shield queue statistics")
+
+    // Update the Pull Zone configuration
+    updatedZone, err := client.PullZone.Update(ctx, newZone.Id, &resources.PullZone{
+        EnableWebPVary:     true,
+        EnableAvifVary:     true,
+        CacheControlMaxAgeOverride: 86400, // 1 day
+    })
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Updated Pull Zone: %s\n", updatedZone.Name)
+
+    // Delete the Pull Zone
+    err = client.PullZone.Delete(ctx, newZone.Id)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Println("Pull Zone deleted successfully")
+}
+```
+
 ### Pagination
 
 The client supports three approaches to pagination:
