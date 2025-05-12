@@ -1,4 +1,4 @@
-# Bunny.net Go API Client
+# Unofficial Go library for the Bunny.net API
 
 > **⚠️ UNDER CONSTRUCTION ⚠️**  
 > This client library is currently under active development and is not yet considered stable. The API may change without notice. Use at your own risk.
