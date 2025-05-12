@@ -298,6 +298,8 @@ for _, item := range allItems {
 ## Available Resources
 
 - Country: List and retrieve country information
+- API Key: List, create, retrieve, and delete API keys
+- DNS Zone: Manage DNS zones and records
 - More resources coming soon...
 
 ## Contributing
