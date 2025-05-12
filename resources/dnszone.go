@@ -1,4 +1,3 @@
-// Package resources provides API resource implementations for the Bunny.net API client
 package resources
 
 import (

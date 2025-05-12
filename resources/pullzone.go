@@ -1,4 +1,3 @@
-// Package resources provides API resource implementations for the Bunny.net API client
 package resources
 
 import (
@@ -172,18 +171,6 @@ type PullZone struct {
 	// CnameDomain is the CNAME domain of the pull zone for setting up custom hostnames
 	CnameDomain string `json:"CnameDomain"`
 
-	// AWSSigningEnabled determines if the AWS Signing is enabled
-	AWSSigningEnabled bool `json:"AWSSigningEnabled"`
-
-	// AWSSigningKey is the AWS Signing region key
-	AWSSigningKey string `json:"AWSSigningKey"`
-
-	// AWSSigningSecret is the AWS Signing region secret
-	AWSSigningSecret string `json:"AWSSigningSecret"`
-
-	// AWSSigningRegionName is the AWS Signing region name
-	AWSSigningRegionName string `json:"AWSSigningRegionName"`
-
 	// LoggingIPAnonymizationEnabled determines if IP anonymization is enabled for logs
 	LoggingIPAnonymizationEnabled bool `json:"LoggingIPAnonymizationEnabled"`
 
@@ -303,8 +290,6 @@ type PullZone struct {
 
 	// PreloadingScreenLogoUrl is the preloading screen logo URL
 	PreloadingScreenLogoUrl string `json:"PreloadingScreenLogoUrl"`
-
-	// Additional fields can be added as needed
 }
 
 // Hostname represents a hostname linked to a Pull Zone
